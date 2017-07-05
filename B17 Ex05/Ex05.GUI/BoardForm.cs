@@ -9,6 +9,8 @@ namespace Ex05.GUI
     {
         private readonly int r_NumberOfRounds;
         private const int k_NumberOfButtonsInGuess = 4;
+        private List<List<GuessButton>> m_GuessRows;
+        private List<Button> m_ArrowButtons;
 
         public BoardForm(int i_NumberOfRounds) : base()
         {
@@ -22,12 +24,14 @@ namespace Ex05.GUI
         {
             base.OnLoad(e);
             initControls();
+            setControlsEventHandlers();
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
             initControls();
+            setControlsEventHandlers();
         }
 
         private void initControls()
@@ -42,16 +46,21 @@ namespace Ex05.GUI
 
             for (int i = 0; i < r_NumberOfRounds; i++)
             {
+                List<GuessButton> buttonsInRow = new List<GuessButton>();
                 for (int j = 0; j < k_NumberOfButtonsInGuess; j++)
                 {
-                    Button grayButton = new GuessButton();
+                    GuessButton grayButton = new GuessButton();
                     grayButton.Location = new Point(15 + (45 * j), 80 + (45 * i));
+                    buttonsInRow.Add(grayButton);
                     controls.Add(grayButton);
                 }
-                controls.Add(generateArrowButton(i));
-				controls.AddRange(generateScoreButtons(i).ToArray());
-            }
+                m_GuessRows.Add(buttonsInRow);
+                Button arrowButton = generateArrowButton(i);
 
+                m_ArrowButtons.Add(arrowButton);
+                controls.Add(arrowButton);
+                controls.AddRange(generateScoreButtons(i).ToArray());
+            }
 
             this.Controls.AddRange(controls.ToArray());
         }
@@ -60,7 +69,7 @@ namespace Ex05.GUI
         {
             Button arrowButton = new Button();
             arrowButton.Size = new Size(40, 20);
-            arrowButton.Location = new Point(195,90 + (45 * i_RowNumber));
+            arrowButton.Location = new Point(195, 90 + (45 * i_RowNumber));
             arrowButton.Text = "-->>";
             arrowButton.TextAlign = ContentAlignment.MiddleCenter;
             arrowButton.Enabled = false;
@@ -80,6 +89,32 @@ namespace Ex05.GUI
             }
 
             return scoreButtons;
+        }
+
+        private void setControlsEventHandlers()
+        {
+            setArrowBottonsOnClicks();
+            setGuessButtonsOnClicks();
+        }
+
+        private void setGuessButtonsOnClicks()
+        {
+
+        }
+
+        private void setArrowBottonsOnClicks()
+        {
+
+        }
+
+        private void guessButton_Click(object sender, EventArgs e)
+        {
+            // Show colors
+        }
+
+        private void arrowButton_Click(object sender, EventArgs e)
+        {
+            // calc score
         }
     }
 
