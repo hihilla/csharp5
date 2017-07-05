@@ -86,21 +86,20 @@ namespace Ex05.Logic
 			return validGuess;
 		}
 
-		public List<char> GuessWord()
+        public List<char> GuessWord(string i_InputGuess)
 		{
 			List<char> userGuess = new List<char>();
 			bool validGuess = false;
 
 			while (!validGuess)
 			{
-				string inputWord = Console.ReadLine().ToUpper();
 				char currentInputLetter;
 				int letterCounter = 0;
 				bool validLetter = true;
 
-				for (int i = 0; i < inputWord.Length && validLetter; i += 2)
+				for (int i = 0; i < i_InputGuess.Length && validLetter; i += 2)
 				{
-					currentInputLetter = inputWord[i];
+					currentInputLetter = i_InputGuess[i];
 					letterCounter++;
 					if (currentInputLetter == k_ExitLetter)
 					{

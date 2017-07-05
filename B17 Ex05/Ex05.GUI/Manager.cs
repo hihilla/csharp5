@@ -25,11 +25,24 @@ namespace Ex05.GUI
 
         private void gameOn()
         {
-			Game game = new Game();
-			game.RandomizeNewWord();
-			m_GamesWord = game.GetWord();
-			Player player = new Player();
+            Game game = new Game();
+            game.RandomizeNewWord();
+            m_GamesWord = game.GetWord();
+            Player player = new Player();
+            BoardForm board = new BoardForm(chooseNumberOfGuesses(player));
+            board.ShowDialog();
 
+            for (m_CurrentRound = 1; m_CurrentRound < m_PlayersNumberOfRounds + 1 && !player.QuiteGame && !m_PlayerWins; m_CurrentRound++)
+            {
+                board.ActivateRow(m_CurrentRound);
+
+
+            }
+        }
+
+        private int chooseNumberOfGuesses(Player i_Player)
+        {
+            return 4;
         }
     }
 }
