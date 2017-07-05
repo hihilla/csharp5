@@ -13,9 +13,15 @@ namespace Ex05.GUI
         public BoardForm(int i_NumberOfRounds) : base()
         {
             r_NumberOfRounds = i_NumberOfRounds;
-            this.Size = new Size(150, 300);
+            this.Size = new Size(300, 80 + (50 * i_NumberOfRounds));
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Bullseye";
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            initControls();
         }
 
         protected override void OnShown(EventArgs e)
@@ -30,7 +36,7 @@ namespace Ex05.GUI
             for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
             {
                 Button blackButton = new SequenceButton();
-                blackButton.Location = new Point(10 + (10 * i), 10);
+                blackButton.Location = new Point(15 + (45 * i), 15);
                 controls.Add(blackButton);
             }
 
@@ -39,35 +45,37 @@ namespace Ex05.GUI
                 for (int j = 0; j < k_NumberOfButtonsInGuess; j++)
                 {
                     Button grayButton = new GuessButton();
-                    grayButton.Location = new Point(10 + (10 * j), 30);
+                    grayButton.Location = new Point(15 + (45 * j), 80 + (45 * i));
                     controls.Add(grayButton);
                 }
-                controls.Add(generateArrowButton());
+                controls.Add(generateArrowButton(i));
+				controls.AddRange(generateScoreButtons(i).ToArray());
             }
 
-            controls.AddRange(generateScoreButtons().ToArray());
 
             this.Controls.AddRange(controls.ToArray());
         }
 
-        private Button generateArrowButton()
+        private Button generateArrowButton(int i_RowNumber)
         {
             Button arrowButton = new Button();
-            arrowButton.Size = new Size(10, 5);
-            arrowButton.Text = "-->";
+            arrowButton.Size = new Size(40, 20);
+            arrowButton.Location = new Point(195,90 + (45 * i_RowNumber));
+            arrowButton.Text = "-->>";
+            arrowButton.TextAlign = ContentAlignment.MiddleCenter;
             arrowButton.Enabled = false;
             return arrowButton;
         }
 
-        private List<Button> generateScoreButtons()
+        private List<Button> generateScoreButtons(int i_RowNumber)
         {
             List<Button> scoreButtons = new List<Button>();
             for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
             {
                 GuessButton scoreButton = new GuessButton();
-                scoreButton.Size = new Size(5, 5);
-                scoreButton.Location = new Point(this.ClientSize.Width - scoreButton.Width - 8 - (8 * (i % 2)),
-                                                 this.ClientSize.Height - scoreButton.Height - 8 - (8 * (i % 2)));
+                scoreButton.Size = new Size(15, 15);
+                scoreButton.Location = new Point(this.ClientSize.Width - scoreButton.Width - 10 - (20 * (i % 2)),
+                                                 80 + (20 * (i / 2) + (45 * i_RowNumber)));
                 scoreButtons.Add(scoreButton);
             }
 
@@ -80,7 +88,7 @@ namespace Ex05.GUI
         public SequenceButton() : base()
         {
             this.BackColor = Color.Black;
-            this.Size = new Size(10, 10);
+            this.Size = new Size(40, 40);
             this.Enabled = false;
         }
     }

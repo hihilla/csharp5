@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ex05.Logic
 {
-    class Player
+    public class Player
     {
 		private bool m_QuiteGame = false;
 		private int m_NumberOfRounds;

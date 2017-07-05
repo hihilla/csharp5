@@ -1,10 +1,10 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Ex05.Logic
 {
-    class Game
+    public class Game
     {
 		private List<char> m_WordToGuess;
         private const int k_NumberOfLettersInWord = 4;
