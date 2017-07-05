@@ -5,7 +5,9 @@ namespace Ex05.GUI
     {
         public static void Main()
         {
-
+            BoardForm bf = new BoardForm(4);
+            bf.ShowDialog();
+            
         }
     }
 }

@@ -36,12 +36,20 @@
   <ItemGroup>
     <Compile Include="Manager.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="BoardForm.cs">
+      <IncludeInPackage>false</IncludeInPackage>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ex05.Logic\Ex05.Logic.csproj">
       <Project>{A2A5BECA-375C-492E-81FD-044C74204930}</Project>
       <Name>Ex05.Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
