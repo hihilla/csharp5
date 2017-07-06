@@ -1,10 +1,10 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Ex05.Logic
 {
-    class Game
+    public class Game
     {
 		private List<char> m_WordToGuess;
         private const int k_NumberOfLettersInWord = 4;
@@ -61,10 +61,10 @@ namespace Ex05.Logic
 			return gamesWord.ToString();
 		}
 
-		public List<char> FeedbackForPlayerGuess(List<char> i_PlayersGuess)
+		public void FeedbackForPlayerGuess(List<char> i_PlayersGuess, out int o_CorrectInPlace, out int o_CorrectMissPlace)
 		{
-			int counterInPlace = 0;
-			int counterMissplaced = 0;
+			o_CorrectInPlace = 0;
+			o_CorrectMissPlace = 0;
 			List<char> feedbackOnGuess = new List<char>();
 
 			for (int i = 0; i < k_NumberOfLettersInWord; i++)
@@ -74,31 +74,33 @@ namespace Ex05.Logic
 
 				if (correctnessAndPosition[0] && !correctnessAndPosition[1])
 				{
-					counterMissplaced++;
+					o_CorrectMissPlace++;
 				}
 
 				if (correctnessAndPosition[0] && correctnessAndPosition[1])
 				{
-					counterInPlace++;
+					o_CorrectInPlace++;
 				}
 			}
 
-			for (int i = 0; i < counterInPlace; i++)
-			{
-				feedbackOnGuess.Add('V');
-			}
+            
 
-			for (int i = 0; i < counterMissplaced; i++)
-			{
-				feedbackOnGuess.Add('X');
-			}
+			//for (int i = 0; i < counterInPlace; i++)
+			//{
+			//	feedbackOnGuess.Add('V');
+			//}
 
-			for (int i = counterInPlace + counterMissplaced; i < k_NumberOfLettersInWord; i++)
-			{
-				feedbackOnGuess.Add(' ');
-			}
+			//for (int i = 0; i < counterMissplaced; i++)
+			//{
+			//	feedbackOnGuess.Add('X');
+			//}
 
-			return feedbackOnGuess;
+			//for (int i = counterInPlace + counterMissplaced; i < k_NumberOfLettersInWord; i++)
+			//{
+			//	feedbackOnGuess.Add(' ');
+			//}
+
+			//return feedbackOnGuess;
 		}
 
 		private List<bool> letterChecker(char i_letterToCheck, int i_indexOfLetter)
