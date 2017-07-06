@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
+using Ex05.Logic;
 
 namespace Ex05.GUI
 {
@@ -12,6 +13,8 @@ namespace Ex05.GUI
         private List<List<GuessButton>> m_GuessRows;
         private List<GuessButton> m_ArrowButtons;
         private List<List<Button>> m_ScoreButtons;
+        private int m_CurrentRound = 0;
+        private Game m_CurrentGame;
 
         public int NumberOfButtonsInGuess
         {
@@ -122,17 +125,29 @@ namespace Ex05.GUI
 
         private void arrowButton_Click(object sender, EventArgs e)
         {
-			int correctInPlace = 0;
-			int correctMissPlaced = 0;
+            int correctInPlace = 0;
+            int correctMissPlaced = 0;
+
             // get guess from colors window and send as List<char> to game.FeedbackForPlayerGuess (with out params)
             GuessButton arrowButton = sender as GuessButton;
-            if (arrowButton != null) {
+            if (arrowButton != null)
+            {
                 showScore(arrowButton.Row, correctInPlace, correctMissPlaced);
             }
         }
 
+        private List<char> getCurrentGuess()
+        {
+            List<char> guess = new List<char>();
+            for (int i = 0; i < k_NumberOfButtonsInGuess; i++) {
+                guess.Add(m_GuessRows[m_CurrentRound][i].Guess);
+            }
+            return guess;
+        }
+
         public void ActivateRow(int i_RowNumber)
         {
+            this.m_CurrentRound = i_RowNumber;
             for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
             {
                 m_GuessRows[i_RowNumber][i].Enabled = true;
@@ -142,14 +157,15 @@ namespace Ex05.GUI
 
         private void showScore(int i_Row, int i_CorrectInPlace, int i_CorrectMissPlace)
         {
-            for (int bull = 0; bull < i_CorrectInPlace; bull++) {
+            for (int bull = 0; bull < i_CorrectInPlace; bull++)
+            {
                 m_ScoreButtons[i_Row][bull].BackColor = Color.Black;
             }
 
             for (int p = 0; p < i_CorrectMissPlace && p + i_CorrectInPlace <= 4; p++)
-			{
-				m_ScoreButtons[i_Row][p + i_CorrectInPlace].BackColor = Color.Black;
-			}
+            {
+                m_ScoreButtons[i_Row][p + i_CorrectInPlace].BackColor = Color.Black;
+            }
         }
 
     }
@@ -167,6 +183,15 @@ namespace Ex05.GUI
     public class GuessButton : SequenceButton
     {
         private int m_Row;
+        private char m_Guess;
+
+        public char Guess
+        {
+            get
+            {
+                return m_Guess;
+            }
+        }
 
         public int Row
         {
