@@ -100,6 +100,7 @@ namespace Ex05.GUI
             for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
             {
                 GuessButton scoreButton = new GuessButton(i_RowNumber, i);
+                scoreButton.Enabled = false;
                 scoreButton.Size = new Size(15, 15);
                 scoreButton.Location = new Point(this.ClientSize.Width - scoreButton.Width - 10 - (20 * (i % 2)),
                                                  80 + (20 * (i / 2) + (45 * i_RowNumber)));
@@ -136,7 +137,6 @@ namespace Ex05.GUI
 
         private void guessButton_Click(object sender, EventArgs e)
         {
-            // Show colors
             GuessButton guessButton = sender as GuessButton;
             if (guessButton != null)
             {
