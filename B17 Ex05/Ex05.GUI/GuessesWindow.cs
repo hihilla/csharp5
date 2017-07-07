@@ -4,18 +4,26 @@ using System.Drawing;
 
 namespace Ex05.GUI
 {
-    public class GuessesManager : Form
+    public class GuessesWindow : Form
     {
         Button m_ButtonNumberOfChances = new Button();
         Button m_ButtonStart = new Button();
         const int k_MaxSizeOfGuesses = 10;
         private int m_CounterOfGuessesClicks = 4;
 
-        public GuessesManager()
+        public int CounterOfGuessesClicks
+        {
+            get
+            {
+                return m_CounterOfGuessesClicks;
+            }
+        }
+
+        public GuessesWindow()
         {
             this.Size = new System.Drawing.Size(150, 150);
             this.StartPosition = FormStartPosition.CenterParent;
-            this.Text = "BullEye!";
+            this.Text = "BullsEye!";
 
             this.Controls.Add(m_ButtonNumberOfChances);
             this.Controls.Add(m_ButtonStart);
@@ -30,7 +38,7 @@ namespace Ex05.GUI
             m_ButtonStart.Location = new Point(this.ClientSize.Width - 8, 
                 this.ClientSize.Height - m_ButtonStart.Height - 8);
 
-            m_ButtonNumberOfChances.Text = "Number of chances: 4";
+            m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", m_CounterOfGuessesClicks);
         }
 
         private void NumberOfGuesses_Click(Object sender, EventArgs e)
@@ -39,9 +47,7 @@ namespace Ex05.GUI
             {
                 this.m_ButtonNumberOfChances.Text = string.Format("Number of chances {0}", m_CounterOfGuessesClicks);
             }
-            
+
         }
-
-
     }
 }
