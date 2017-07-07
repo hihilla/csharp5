@@ -38,8 +38,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="BoardForm.cs">
       <IncludeInPackage>false</IncludeInPackage>
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GuessesManager.cs">
+    <Compile Include="GuessesWindow.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

@@ -29,7 +29,6 @@ namespace Ex05.GUI
             this.Controls.Add(m_ButtonStart);
 
             this.m_ButtonNumberOfChances.Click += new EventHandler(NumberOfGuesses_Click);
-
         }
 
         private void InitGuesses()
@@ -47,7 +46,6 @@ namespace Ex05.GUI
             {
                 this.m_ButtonNumberOfChances.Text = string.Format("Number of chances {0}", m_CounterOfGuessesClicks);
             }
-
         }
     }
 }
