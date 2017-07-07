@@ -296,7 +296,7 @@ namespace Ex05.GUI
             this.m_Guess = i_Guess;
             this.m_Row = i_Row;
             this.m_Colum = i_Colum;
-            this.Size = new Size(190, 120);
+            this.Size = new Size(215, 140);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -320,8 +320,8 @@ namespace Ex05.GUI
                 char currentGuess = (char)('A' + i);
                 GuessButton currentButton = new GuessButton(i_Row, i_Colum, currentGuess);
                 currentButton.BackColor = buttonsColors[i];
-                currentButton.Location = new Point(5 + ((i / 2) * 45),
-                                                   5 + ((i % 2) * 45));
+                currentButton.Location = new Point(10 + ((i / 2) * 50),
+                                                   10 + ((i % 2) * 50));
                 if (m_Guess.Contains(currentGuess))
                 {
                     currentButton.Enabled = false;
