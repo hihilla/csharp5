@@ -1,5 +1,6 @@
 ﻿﻿﻿﻿using System.Collections.Generic;
 using Ex05.Logic;
+using System;
 
 namespace Ex05.GUI
 {
@@ -30,14 +31,13 @@ namespace Ex05.GUI
             m_GamesWord = game.GetWord();
             Player player = new Player();
             GuessesForm guessForm = new GuessesForm();
-            guessForm.ShowDialog();
-            if (guessForm.CancelButton = "Cancel")
+
+            if (guessForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                System.Windows.Forms.Application.Exit();
+                int numberOfGuesses = guessForm.CounterOfGuessesClicks;
+                BoardForm board = new BoardForm(numberOfGuesses, game);
+                board.ShowDialog();
             }
-            int numberOfGuesses = guessForm.CounterOfGuessesClicks;
-            BoardForm board = new BoardForm(numberOfGuesses, game);
-            board.ShowDialog();
         }
     }
 }

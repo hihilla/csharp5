@@ -26,6 +26,7 @@ namespace Ex05.GUI
             this.Text = "BullsEye!";
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
 
             this.Controls.Add(m_ButtonNumberOfChances);
             this.Controls.Add(m_ButtonStart);
@@ -62,6 +63,7 @@ namespace Ex05.GUI
         private void start_Click(Object sender, EventArgs e)
         {
             this.Close();
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
         protected override void OnShown(EventArgs e)
