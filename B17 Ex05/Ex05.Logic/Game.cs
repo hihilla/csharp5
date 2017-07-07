@@ -83,8 +83,6 @@ namespace Ex05.Logic
 				}
 			}
 
-            
-
 			//for (int i = 0; i < counterInPlace; i++)
 			//{
 			//	feedbackOnGuess.Add('V');
