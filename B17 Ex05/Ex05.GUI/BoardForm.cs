@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
@@ -196,11 +196,11 @@ namespace Ex05.GUI
                 showScore(arrowButton.Row, correctInPlace, correctMissPlaced);
                 if (correctInPlace == 4)
                 {
-                    enableRow(arrowButton.Row + 1);
-                }
-                else
-                {
                     disableAllRows();
+                }
+                else if (arrowButton.Row + 1 <= r_NumberOfRounds)
+                {
+                    enableRow(arrowButton.Row + 1);
                 }
             }
         }
