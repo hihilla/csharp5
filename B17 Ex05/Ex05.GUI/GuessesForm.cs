@@ -35,8 +35,8 @@ namespace Ex05.GUI
         private void InitGuesses()
         {
             m_ButtonStart.Text = "Start";
-            m_ButtonStart.Location = new Point(this.ClientSize.Width - 8,
-                this.ClientSize.Height - m_ButtonStart.Height - 8);
+            m_ButtonStart.Location = new Point(this.ClientSize.Width - 50,
+                this.ClientSize.Height - m_ButtonStart.Height - 50);
 
             m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", m_CounterOfGuessesClicks);
             m_ButtonNumberOfChances.Location = new Point(this.ClientSize.Width, this.ClientSize.Height - 8);
