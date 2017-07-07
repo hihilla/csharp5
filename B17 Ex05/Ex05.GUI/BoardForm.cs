@@ -11,6 +11,7 @@ namespace Ex05.GUI
         private readonly int r_NumberOfRounds;
         private const int k_NumberOfButtonsInGuess = 4;
         private List<List<GuessButton>> m_GuessBottonsRows = new List<List<GuessButton>>();
+        private List<SequenceButton> m_BlackButtons = new List<SequenceButton>();
         private List<GuessButton> m_ArrowButtons = new List<GuessButton>();
         private List<List<Button>> m_ScoreButtons = new List<List<Button>>();
         private List<List<char>> m_PlayersGuesses = new List<List<char>>();
@@ -52,9 +53,10 @@ namespace Ex05.GUI
             List<Control> controls = new List<Control>();
             for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
             {
-                Button blackButton = new SequenceButton();
+                SequenceButton blackButton = new SequenceButton();
                 blackButton.Enabled = false;
                 blackButton.Location = new Point(15 + (45 * i), 15);
+                m_BlackButtons.Add(blackButton);
                 controls.Add(blackButton);
             }
 
@@ -169,10 +171,6 @@ namespace Ex05.GUI
                                                                guessButton.Colum,
                                                                m_PlayersGuesses[guessButton.Row]);
                 colorsForm.ShowDialog();
-                //DialogResult dialogResult = colorsForm.ShowDialog();
-                //Console.WriteLine(dialogResult);
-                //if (dialogResult != DialogResult.Cancel)
-                //{
                 m_PlayersGuesses[guessButton.Row] = colorsForm.Guess;
                 guessButton.BackColor = colorsForm.ChosenColor;
                 guessButton.SetGuess = true;
@@ -180,7 +178,6 @@ namespace Ex05.GUI
                 {
                     m_ArrowButtons[guessButton.Row].Enabled = true;
                 }
-                //}
             }
         }
 
@@ -202,6 +199,7 @@ namespace Ex05.GUI
                 if (correctInPlace == 4)
                 {
                     disableAllRows();
+                    displaySequence();
                 }
                 else if (arrowButton.Row + 1 <= r_NumberOfRounds)
                 {
@@ -247,11 +245,14 @@ namespace Ex05.GUI
 
         private void displaySequence()
         {
-            Color[] buttonsColors = { Color.Pink, Color.Red, Color.LightGreen,
-                                      Color.LightBlue, Color.Blue, Color.Yellow,
-                                      Color.Brown, Color.White};
+			Color[] buttonsColors = { Color.Magenta, Color.Red, Color.LightGreen,
+									  Color.LightBlue, Color.Blue, Color.Yellow,
+									  Color.Brown, Color.White};
             string sequence = m_CurrentGame.GetWord();
-
+            for (int i = 0; i < k_NumberOfButtonsInGuess; i++) {
+                int colorIndex = sequence[i] - 'A';
+                m_BlackButtons[i].BackColor = buttonsColors[i];
+            }
         }
 
     }
@@ -410,7 +411,6 @@ namespace Ex05.GUI
 
         public GuessButton(int i_Row) : base()
         {
-            //this.DialogResult = DialogResult.OK;
             this.m_Row = i_Row;
             this.BackColor = default(Color);
 

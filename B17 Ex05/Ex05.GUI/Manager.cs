@@ -29,6 +29,7 @@ namespace Ex05.GUI
             Game game = new Game();
             game.RandomizeNewWord();
             m_GamesWord = game.GetWord();
+            Console.Write(m_GamesWord);
             Player player = new Player();
             GuessesForm guessForm = new GuessesForm();
 
