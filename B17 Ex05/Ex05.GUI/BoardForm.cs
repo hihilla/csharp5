@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿﻿﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
@@ -32,18 +32,11 @@ namespace Ex05.GUI
             {
                 m_PlayersGuesses.Add(new List<char>());
             }
-            this.Size = new Size(300, 80 + (55 * i_NumberOfRounds));
+            this.Size = new Size(300, 90 + (50 * i_NumberOfRounds));
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Text = "Bullseye";
-        }
-
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            initControls();
-            setControlsEventHandlers();
         }
 
         protected override void OnShown(EventArgs e)
@@ -126,7 +119,6 @@ namespace Ex05.GUI
                     grayButton.Click += new EventHandler(guessButton_Click);
                 }
             }
-
         }
 
         private void setArrowBottonsOnClicks()
