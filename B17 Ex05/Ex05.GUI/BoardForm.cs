@@ -168,6 +168,7 @@ namespace Ex05.GUI
             int correctInPlace = 0;
             int correctMissPlaced = 0;
             GuessButton arrowButton = sender as GuessButton;
+
             if (arrowButton != null)
             {
                 arrowButton.Enabled = false;
