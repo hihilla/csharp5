@@ -31,6 +31,10 @@ namespace Ex05.GUI
             Player player = new Player();
             GuessesForm guessForm = new GuessesForm();
             guessForm.ShowDialog();
+            if (guessForm.CancelButton = "Cancel")
+            {
+                System.Windows.Forms.Application.Exit();
+            }
             int numberOfGuesses = guessForm.CounterOfGuessesClicks;
             BoardForm board = new BoardForm(numberOfGuesses, game);
             board.ShowDialog();
