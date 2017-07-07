@@ -1,5 +1,4 @@
-﻿﻿using System;
-namespace Ex05.GUI
+﻿namespace Ex05.GUI
 {
     public class Program
     {

@@ -13,22 +13,6 @@ namespace Ex05.Logic
         private const char k_FirstLetterPossible = 'A';
         private const char k_LastLetterPossible = 'H';
 
-		public int MinNumberOfGuesses
-		{
-			get
-			{
-				return k_MinNumberOfRounds;
-			}
-		}
-
-		public int MaxNumberOfGuesses
-		{
-			get
-			{
-				return k_MaxNumberOfRounds;
-			}
-		}
-
 		public void RandomizeNewWord()
 		{
 			List<char> wordToReturn = new List<char>();
