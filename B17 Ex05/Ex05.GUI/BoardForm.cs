@@ -183,7 +183,7 @@ namespace Ex05.GUI
             List<char> guess = new List<char>();
             for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
             {
-                guess.Add(m_GuessBottonsRows[m_CurrentRound][i].Guess);
+                guess.Add(m_PlayersGuesses[m_CurrentRound][i]);
             }
             return guess;
         }
