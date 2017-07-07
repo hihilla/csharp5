@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
@@ -73,6 +73,7 @@ namespace Ex05.GUI
                     buttonsInRow.Add(grayButton);
                     controls.Add(grayButton);
                 }
+
                 m_GuessRows.Add(buttonsInRow);
                 m_ArrowButtons.Add(generateArrowButton(row));
                 m_ScoreButtons.Add(generateScoreButtons(row));
@@ -142,13 +143,12 @@ namespace Ex05.GUI
             GuessButton guessButton = sender as GuessButton;
             if (guessButton != null)
             {
-                Console.WriteLine("FGHJKJHGFDFGHJ");
                 PickAColorForm colorsForm = new PickAColorForm(guessButton.Row,
                                                                guessButton.Colum,
                                                                m_PlayersGuesses[guessButton.Row]);
                 colorsForm.ShowDialog();
                 m_PlayersGuesses[guessButton.Row] = colorsForm.Guess;
-                //guessButton.Guess = 
+                guessButton.BackColor = colorsForm.ChosenColor;
             }
         }
 
@@ -206,9 +206,26 @@ namespace Ex05.GUI
     {
         private List<GuessButton> m_ColoredButtons = new List<GuessButton>();
         private List<char> m_Guess = new List<char>();
+        private Color m_ChosenColor;
         private int m_Row;
-        private int m_Colum;
-
+        private int m_Colum;      
+		
+        public Color ChosenColor
+		{
+			get
+			{
+				return m_ChosenColor;
+			}
+		}
+		
+		public List<GuessButton> ColoredButtons
+		{
+			get
+			{
+				return m_ColoredButtons;
+			}
+		}
+		
         public List<char> Guess
         {
             get
@@ -219,9 +236,9 @@ namespace Ex05.GUI
 
         public PickAColorForm(int i_Row, int i_Colum, List<char> i_Guess) : base()
         {
-			this.m_Guess = i_Guess;
-			this.m_Row = i_Row;
-			this.m_Colum = i_Colum;
+            this.m_Guess = i_Guess;
+            this.m_Row = i_Row;
+            this.m_Colum = i_Colum;
             this.Size = new Size(190, 120);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -247,10 +264,10 @@ namespace Ex05.GUI
                 currentButton.BackColor = buttonsColors[i];
                 currentButton.Location = new Point(5 + ((i / 2) * 45),
                                                    5 + ((i % 2) * 45));
-                //if (m_Guess.Contains(currentGuess))
-                //{
-                //    currentButton.Enabled = false;
-                //}
+                if (m_Guess.Contains(currentGuess))
+                {
+                    currentButton.Enabled = false;
+                }
 
                 m_ColoredButtons.Add(currentButton);
             }
@@ -272,6 +289,7 @@ namespace Ex05.GUI
             if (colorButton != null)
             {
                 m_Guess.Add(colorButton.Guess);
+                m_ChosenColor = colorButton.BackColor;
             }
             this.Close();
         }
@@ -322,55 +340,6 @@ namespace Ex05.GUI
                 return m_Row;
             }
         }
-
-        //     private List<char> m_Guess;
-
-        //     public List<char> Guess
-        //     {
-        //         get
-        //         {
-        //             return m_Guess;
-        //         }
-        //         set
-        //         {
-        //	List<char> userGuess = new List<char>();
-        //	bool validGuess = false;
-
-        //	while (!validGuess)
-        //	{
-        //		char currentInputLetter;
-        //		int letterCounter = 0;
-        //		bool validLetter = true;
-
-        //                 for (int i = 0; i < value.Count && validLetter; i += 2)
-        //		{
-        //                     currentInputLetter = value[i];
-        //			letterCounter++;
-
-        //			if (userGuess.Contains(currentInputLetter))
-        //			{
-        //				throw new ArgumentException("Please use each letter only once");
-        //			}
-        //			else
-        //			{
-        //				userGuess.Add(currentInputLetter);
-        //			}
-        //		}
-
-        //                 if (letterCounter != 4 || !validLetter)
-        //		{
-        //			validGuess = false;
-        //			userGuess.Clear();
-        //		}
-        //		else
-        //		{
-        //			validGuess = true;
-        //		}
-        //	}
-
-        //             m_Guess = userGuess;
-        //}
-        //}
 
         public GuessButton(int i_Row) : base()
         {
