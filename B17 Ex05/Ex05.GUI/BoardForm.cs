@@ -211,7 +211,7 @@ namespace Ex05.GUI
 
             for (int p = 0; p < i_CorrectMissPlace && p + i_CorrectInPlace <= 4; p++)
             {
-                m_ScoreButtons[i_Row][p + i_CorrectInPlace].BackColor = Color.Black;
+                m_ScoreButtons[i_Row][p + i_CorrectInPlace].BackColor = Color.Yellow;
             }
         }
 
