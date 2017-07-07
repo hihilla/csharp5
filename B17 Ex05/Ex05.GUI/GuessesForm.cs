@@ -6,8 +6,8 @@ namespace Ex05.GUI
 {
     public class GuessesForm : Form
     {
-        Button m_ButtonNumberOfChances = new Button();
-        Button m_ButtonStart = new Button();
+        Button m_ButtonNumberOfChances;
+        Button m_ButtonStart;
         const int k_MaxSizeOfGuesses = 10;
         private int m_CounterOfGuessesClicks = 4;
 
@@ -21,42 +21,49 @@ namespace Ex05.GUI
 
         public GuessesForm()
         {
-            this.Size = new System.Drawing.Size(300, 150);
+            this.Size = new Size(300, 150);
             this.StartPosition = FormStartPosition.CenterParent;
             this.Text = "BullsEye!";
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
 
-            this.Controls.Add(m_ButtonNumberOfChances);
-            this.Controls.Add(m_ButtonStart);
+            initControls();
+            setEventHandlers();
+        }
+
+        private void initControls()
+        {
+            m_ButtonNumberOfChances = new Button();
+            m_ButtonStart = new Button();
 
             m_ButtonStart.Text = "Start";
             m_ButtonStart.Location = new Point(this.ClientSize.Width - 95,
-                this.ClientSize.Height - m_ButtonStart.Height - 10);
-
-            m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", 
+                                               this.ClientSize.Height - m_ButtonStart.Height - 10);
+            m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}",
                                                          m_CounterOfGuessesClicks);
             m_ButtonNumberOfChances.Width = this.ClientSize.Width;
-            m_ButtonNumberOfChances.Location = new Point(this.ClientSize.Width - 278, 
+            m_ButtonNumberOfChances.Location = new Point(this.ClientSize.Width - 278,
                                                          this.ClientSize.Height - 100);
 
-            this.m_ButtonNumberOfChances.Click += new EventHandler(numberOfGuesses_Click);
-            this.m_ButtonStart.Click += new EventHandler(start_Click);
+            this.Controls.Add(m_ButtonNumberOfChances);
+            this.Controls.Add(m_ButtonStart);
         }
 
-        private void numberOfGuesses_Click(Object sender, EventArgs e)
-        {
-            m_CounterOfGuessesClicks++;
+		private void setEventHandlers()
+		{
+			this.m_ButtonNumberOfChances.Click += new EventHandler(numberOfGuesses_Click);
+			this.m_ButtonStart.Click += new EventHandler(start_Click);
+		}
 
-            if (m_CounterOfGuessesClicks <= k_MaxSizeOfGuesses)
+		private void numberOfGuesses_Click(Object sender, EventArgs e)
+        {
+
+            if (m_CounterOfGuessesClicks < k_MaxSizeOfGuesses)
             {
-                this.m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", 
+                m_CounterOfGuessesClicks++;
+                this.m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}",
                                                                   m_CounterOfGuessesClicks);
-            }
-            else
-            {
-                m_CounterOfGuessesClicks = k_MaxSizeOfGuesses;
             }
         }
 
