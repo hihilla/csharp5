@@ -265,6 +265,7 @@ namespace Ex05.GUI
             this.Size = new Size(190, 120);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Pick A Color";
         }
 
