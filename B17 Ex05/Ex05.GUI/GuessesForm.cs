@@ -49,11 +49,11 @@ namespace Ex05.GUI
             if (m_CounterOfGuessesClicks <= k_MaxSizeOfGuesses)
             {
                 this.m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", m_CounterOfGuessesClicks);
-            }
-            else
-            {
-                m_CounterOfGuessesClicks = k_MaxSizeOfGuesses;
-                this.m_ButtonNumberOfChances.Enabled = false;
+                
+                if (m_CounterOfGuessesClicks == k_MaxSizeOfGuesses)
+                {
+                    this.m_ButtonNumberOfChances.Enabled = false;
+                }
             }
         }
 
