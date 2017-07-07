@@ -29,12 +29,13 @@ namespace Ex05.GUI
             this.Controls.Add(m_ButtonStart);
 
             this.m_ButtonNumberOfChances.Click += new EventHandler(NumberOfGuesses_Click);
+            this.m_ButtonStart.Click += new EventHandler(start_Click);
         }
 
         private void InitGuesses()
         {
             m_ButtonStart.Text = "Start";
-            m_ButtonStart.Location = new Point(this.ClientSize.Width - 8, 
+            m_ButtonStart.Location = new Point(this.ClientSize.Width - 8,
                 this.ClientSize.Height - m_ButtonStart.Height - 8);
 
             m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", m_CounterOfGuessesClicks);
@@ -48,5 +49,16 @@ namespace Ex05.GUI
                 this.m_ButtonNumberOfChances.Text = string.Format("Number of chances {0}", m_CounterOfGuessesClicks);
             }
         }
+
+        private void start_Click(Object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+        }
     }
 }
+

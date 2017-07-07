@@ -136,7 +136,6 @@ namespace Ex05.GUI
             if (guessButton != null)
             {
                 PickAColorForm colorsForm = new PickAColorForm(guessButton.Row);
-
             }
         }
 
