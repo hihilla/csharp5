@@ -35,7 +35,7 @@ namespace Ex05.GUI
                 this.ClientSize.Height - m_ButtonStart.Height - 10);
 
             m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", m_CounterOfGuessesClicks);
-            m_ButtonNumberOfChances.Width = 280;
+            m_ButtonNumberOfChances.Width = this.ClientSize.Width;//chnged from 280
             m_ButtonNumberOfChances.Location = new Point(this.ClientSize.Width - 278, this.ClientSize.Height - 100);
 
             this.m_ButtonNumberOfChances.Click += new EventHandler(numberOfGuesses_Click);
@@ -73,4 +73,3 @@ namespace Ex05.GUI
         }
     }
 }
-
