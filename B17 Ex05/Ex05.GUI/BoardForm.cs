@@ -172,6 +172,7 @@ namespace Ex05.GUI
             m_CurrentGame.FeedbackForPlayerGuess(getCurrentGuess(), out correctInPlace, out correctMissPlaced);
 
             GuessButton arrowButton = sender as GuessButton;
+
             if (arrowButton != null)
             {
                 showScore(arrowButton.Row, correctInPlace, correctMissPlaced);
