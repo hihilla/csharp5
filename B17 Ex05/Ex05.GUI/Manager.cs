@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿﻿using System.Collections.Generic;
 using Ex05.Logic;
 
 namespace Ex05.GUI
@@ -29,7 +29,7 @@ namespace Ex05.GUI
             game.RandomizeNewWord();
             m_GamesWord = game.GetWord();
             Player player = new Player();
-            GuessesWindow GuessesWindow = new GuessesWindow();
+            GuessesForm GuessesWindow = new GuessesForm();
             int numberOfGuesses = GuessesWindow.CounterOfGuessesClicks;
             BoardForm board = new BoardForm(numberOfGuesses);
             board.ShowDialog();

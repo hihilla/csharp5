@@ -10,9 +10,9 @@ namespace Ex05.GUI
     {
         private readonly int r_NumberOfRounds;
         private const int k_NumberOfButtonsInGuess = 4;
-        private List<List<GuessButton>> m_GuessRows;
-        private List<GuessButton> m_ArrowButtons;
-        private List<List<Button>> m_ScoreButtons;
+        private List<List<GuessButton>> m_GuessRows = new List<List<GuessButton>>();
+        private List<GuessButton> m_ArrowButtons = new List<GuessButton>();
+        private List<List<Button>> m_ScoreButtons = new List<List<Button>>();
         private int m_CurrentRound = 0;
         private Game m_CurrentGame;
 
@@ -235,14 +235,12 @@ namespace Ex05.GUI
             GuessButton colorButton = sender as GuessButton;
             if (colorButton != null)
             {
-                addToGuess(colorButton.Guess);
+                m_Guess.Add(colorButton.Guess);
+                colorButton.Enabled = false;
             }
         }
 
-        private void addToGuess(char i_Guess)
-        {
 
-        }
     }
 
     public class SequenceButton : Button
