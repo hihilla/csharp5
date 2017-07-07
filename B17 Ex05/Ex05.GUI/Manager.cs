@@ -6,24 +6,15 @@ namespace Ex05.GUI
 {
     public class Manager
     {
-        //private int m_PlayersNumberOfRounds;
-        //private int m_CurrentRound;
         private string m_GamesWord;
         private List<List<char>> m_ListOfPlayerGuesses = new List<List<char>>();
         private List<List<char>> m_ListOfGuessesFeedback = new List<List<char>>();
-        //private bool m_PlayerWins = false;
-        //private bool m_KeepPlaying = true;
- 
-        //public Manager()
-        //{
-        //}
 
         public void Run()
         {
             Game game = new Game();
             game.RandomizeNewWord();
             m_GamesWord = game.GetWord();
-            //Console.Write(m_GamesWord);
             Player player = new Player();
             GuessesForm guessForm = new GuessesForm();
 
