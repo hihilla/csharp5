@@ -84,6 +84,7 @@ namespace Ex05.GUI
             arrowButton.Text = "-->>";
             arrowButton.TextAlign = ContentAlignment.MiddleCenter;
             arrowButton.Enabled = false;
+
             return arrowButton;
         }
 
@@ -110,17 +111,33 @@ namespace Ex05.GUI
 
         private void setGuessButtonsOnClicks()
         {
+            foreach (List<GuessButton> buttons in m_GuessRows)
+            {
+                foreach (GuessButton grayButton in buttons)
+                {
+                    grayButton.Click += new EventHandler(guessButton_Click);
+                }
+            }
 
         }
 
         private void setArrowBottonsOnClicks()
         {
-
+            foreach (GuessButton arrowButton in m_ArrowButtons)
+            {
+                arrowButton.Click += new EventHandler(arrowButton_Click);
+            }
         }
 
         private void guessButton_Click(object sender, EventArgs e)
         {
             // Show colors
+            GuessButton guessButton = sender as GuessButton;
+            if (guessButton != null)
+            {
+                PickAColorForm colorsForm = new PickAColorForm(guessButton.Row);
+
+            }
         }
 
         private void arrowButton_Click(object sender, EventArgs e)
@@ -139,7 +156,8 @@ namespace Ex05.GUI
         private List<char> getCurrentGuess()
         {
             List<char> guess = new List<char>();
-            for (int i = 0; i < k_NumberOfButtonsInGuess; i++) {
+            for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
+            {
                 guess.Add(m_GuessRows[m_CurrentRound][i].Guess);
             }
             return guess;
@@ -152,6 +170,7 @@ namespace Ex05.GUI
             {
                 m_GuessRows[i_RowNumber][i].Enabled = true;
             }
+
             m_ArrowButtons[i_RowNumber].Enabled = true;
         }
 
@@ -168,6 +187,46 @@ namespace Ex05.GUI
             }
         }
 
+    }
+
+    public class PickAColorForm : Form
+    {
+        private List<GuessButton> m_ColoredButtons = new List<GuessButton>();
+        private List<char> m_Guess = new List<char>();
+
+        public PickAColorForm(int i_Row) : base()
+        {
+            this.Size = new Size(190, 100);
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.Text = "Pick A Color";
+            initControls(i_Row);
+        }
+
+        private void initControls(int i_Row)
+        {
+            Color[] buttonsColors = { Color.Pink, Color.Red, Color.LightGreen,
+                                      Color.LightBlue, Color.Blue, Color.Yellow,
+                                      Color.Brown, Color.White};
+            for (int i = 0; i < 8; i++)
+            {
+                char currentGuess = (char)('A' + i);
+                GuessButton currentButton = new GuessButton(i_Row, currentGuess);
+                currentButton.BackColor = buttonsColors[i];
+                currentButton.Location = new Point(5 + ((i % 2) * 45),
+                                                   5 + ((i / 2) * 45));
+                currentButton.
+
+                m_ColoredButtons.Add(currentButton);
+            }
+
+            this.Controls.AddRange(m_ColoredButtons.ToArray());
+        }
+
+        private void colorButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class SequenceButton : Button
@@ -191,6 +250,7 @@ namespace Ex05.GUI
             {
                 return m_Guess;
             }
+
         }
 
         public int Row
@@ -253,6 +313,13 @@ namespace Ex05.GUI
         public GuessButton(int i_Row) : base()
         {
             m_Row = i_Row;
+            this.BackColor = Color.Gray;
+        }
+
+        public GuessButton(int i_Row, char i_Guess) : base()
+        {
+            m_Row = i_Row;
+            m_Guess = i_Guess;
             this.BackColor = Color.Gray;
         }
     }
