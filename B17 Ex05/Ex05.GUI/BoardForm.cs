@@ -167,26 +167,18 @@ namespace Ex05.GUI
         {
             int correctInPlace = 0;
             int correctMissPlaced = 0;
-
-            // get guess from colors window and send as List<char> to game.FeedbackForPlayerGuess (with out params)
-            m_CurrentGame.FeedbackForPlayerGuess(getCurrentGuess(), out correctInPlace, out correctMissPlaced);
-
             GuessButton arrowButton = sender as GuessButton;
 
             if (arrowButton != null)
             {
+                arrowButton.Enabled = false;
+                List<char> currentGuess = m_PlayersGuesses[arrowButton.Row];
+                this.m_CurrentGame.FeedbackForPlayerGuess(currentGuess, 
+                                                          out correctInPlace, 
+                                                          out correctMissPlaced);
+
                 showScore(arrowButton.Row, correctInPlace, correctMissPlaced);
             }
-        }
-
-        private List<char> getCurrentGuess()
-        {
-            List<char> guess = new List<char>();
-            for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
-            {
-                guess.Add(m_PlayersGuesses[m_CurrentRound][i]);
-            }
-            return guess;
         }
 
         private bool allRowSet(int i_Row)
@@ -291,7 +283,7 @@ namespace Ex05.GUI
                                                    5 + ((i % 2) * 45));
                 if (m_Guess.Contains(currentGuess))
                 {
-                    currentButton.Visible = false;
+                    currentButton.Enabled = false;
                 }
 
                 m_ColoredButtons.Add(currentButton);
