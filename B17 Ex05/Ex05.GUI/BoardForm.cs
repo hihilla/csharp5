@@ -193,17 +193,25 @@ namespace Ex05.GUI
     {
         private List<GuessButton> m_ColoredButtons = new List<GuessButton>();
         private List<char> m_Guess = new List<char>();
+        private int m_Round;
 
-        public PickAColorForm(int i_Row) : base()
+        public PickAColorForm(int i_Round) : base()
         {
+            this.m_Round = i_Round;
             this.Size = new Size(190, 100);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Text = "Pick A Color";
-            initControls(i_Row);
         }
 
-        protected void initControls(int i_Row)
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            initControls(m_Round);
+            setControlsEventHandlers();
+        }
+
+        protected void initControls(int i_Round)
         {
             Color[] buttonsColors = { Color.Pink, Color.Red, Color.LightGreen,
                                       Color.LightBlue, Color.Blue, Color.Yellow,
@@ -211,7 +219,7 @@ namespace Ex05.GUI
             for (int i = 0; i < 8; i++)
             {
                 char currentGuess = (char)('A' + i);
-                GuessButton currentButton = new GuessButton(i_Row, currentGuess);
+                GuessButton currentButton = new GuessButton(i_Round, currentGuess);
                 currentButton.BackColor = buttonsColors[i];
                 currentButton.Location = new Point(5 + ((i % 2) * 45),
                                                    5 + ((i / 2) * 45));
