@@ -63,7 +63,7 @@ namespace Ex05.GUI
         private void start_Click(Object sender, EventArgs e)
         {
             this.Close();
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
         }
 
         protected override void OnShown(EventArgs e)

@@ -6,7 +6,7 @@ namespace Ex05.GUI
         public static void Main()
         {
             Manager manager = new Manager();
-            manager.gameOn();
+            manager.Run();
         }
     }
 }

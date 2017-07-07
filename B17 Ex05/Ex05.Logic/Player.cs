@@ -138,7 +138,8 @@ namespace Ex05.Logic
 
 		public bool InRange(char i_Letter)
 		{
-			bool letterInRange = (i_Letter >= k_FirstLetterPossible) && (i_Letter <= k_LastLetterPossible);
+			bool letterInRange = (i_Letter >= k_FirstLetterPossible) 
+                                  && (i_Letter <= k_LastLetterPossible);
 
 			return letterInRange;
 		}

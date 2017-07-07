@@ -14,22 +14,16 @@ namespace Ex05.GUI
         //private bool m_PlayerWins = false;
         //private bool m_KeepPlaying = true;
  
-        public Manager()
-        {
-        }
+        //public Manager()
+        //{
+        //}
 
         public void Run()
-        {
-            //m_KeepPlaying = true;
-
-        }
-
-        public void gameOn()
         {
             Game game = new Game();
             game.RandomizeNewWord();
             m_GamesWord = game.GetWord();
-            Console.Write(m_GamesWord);
+            //Console.Write(m_GamesWord);
             Player player = new Player();
             GuessesForm guessForm = new GuessesForm();
 
