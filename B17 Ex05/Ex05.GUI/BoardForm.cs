@@ -66,7 +66,6 @@ namespace Ex05.GUI
                     if (row != 0)
                     {
                         grayButton.Enabled = false;
-                        //grayButton.Visible = false;
                     }
                     grayButton.Location = new Point(15 + (45 * colum), 80 + (45 * row));
                     buttonsInRow.Add(grayButton);
@@ -90,7 +89,7 @@ namespace Ex05.GUI
             arrowButton.Location = new Point(195, 90 + (45 * i_RowNumber));
             arrowButton.Text = "-->>";
             arrowButton.TextAlign = ContentAlignment.MiddleCenter;
-            arrowButton.Enabled = false;
+            arrowButton.Enabled = i_RowNumber == 0;
 
             return arrowButton;
         }
