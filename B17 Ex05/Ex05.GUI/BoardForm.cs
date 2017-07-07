@@ -191,6 +191,7 @@ namespace Ex05.GUI
             if (arrowButton != null)
             {
                 arrowButton.Enabled = false;
+                disableRow(arrowButton.Row);
                 List<char> currentGuess = m_PlayersGuesses[arrowButton.Row];
                 this.m_CurrentGame.FeedbackForPlayerGuess(currentGuess,
                                                           out correctInPlace,
