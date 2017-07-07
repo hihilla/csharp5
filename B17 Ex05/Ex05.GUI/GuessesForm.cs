@@ -44,9 +44,13 @@ namespace Ex05.GUI
 
         private void numberOfGuesses_Click(Object sender, EventArgs e)
         {
+            
             if (m_CounterOfGuessesClicks++ <= k_MaxSizeOfGuesses)
             {
                 this.m_ButtonNumberOfChances.Text = string.Format("Number of chances {0}", m_CounterOfGuessesClicks);
+            } else
+            {
+                m_CounterOfGuessesClicks = k_MaxSizeOfGuesses;
             }
         }
 
