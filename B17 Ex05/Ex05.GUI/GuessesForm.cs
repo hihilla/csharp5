@@ -21,25 +21,22 @@ namespace Ex05.GUI
 
         public GuessesForm()
         {
-            this.Size = new System.Drawing.Size(150, 150);
+            this.Size = new System.Drawing.Size(300, 150);
             this.StartPosition = FormStartPosition.CenterParent;
             this.Text = "BullsEye!";
 
             this.Controls.Add(m_ButtonNumberOfChances);
             this.Controls.Add(m_ButtonStart);
 
-            this.m_ButtonNumberOfChances.Click += new EventHandler(numberOfGuesses_Click);
-            this.m_ButtonStart.Click += new EventHandler(start_Click);
-        }
-
-        private void InitGuesses()
-        {
             m_ButtonStart.Text = "Start";
-            m_ButtonStart.Location = new Point(this.ClientSize.Width - 50,
-                this.ClientSize.Height - m_ButtonStart.Height - 50);
+            m_ButtonStart.Location = new Point(this.ClientSize.Width - 95,
+                this.ClientSize.Height - m_ButtonStart.Height - 10);
 
             m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", m_CounterOfGuessesClicks);
-            m_ButtonNumberOfChances.Location = new Point(this.ClientSize.Width, this.ClientSize.Height - 8);
+            m_ButtonNumberOfChances.Location = new Point(this.ClientSize.Width - 20, this.ClientSize.Height - 8);
+
+            this.m_ButtonNumberOfChances.Click += new EventHandler(numberOfGuesses_Click);
+            this.m_ButtonStart.Click += new EventHandler(start_Click);
         }
 
         private void numberOfGuesses_Click(Object sender, EventArgs e)
@@ -48,7 +45,8 @@ namespace Ex05.GUI
             if (m_CounterOfGuessesClicks++ <= k_MaxSizeOfGuesses)
             {
                 this.m_ButtonNumberOfChances.Text = string.Format("Number of chances {0}", m_CounterOfGuessesClicks);
-            } else
+            }
+            else
             {
                 m_CounterOfGuessesClicks = k_MaxSizeOfGuesses;
             }
