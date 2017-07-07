@@ -185,7 +185,6 @@ namespace Ex05.GUI
                 m_ScoreButtons[i_Row][p + i_CorrectInPlace].BackColor = Color.Black;
             }
         }
-
     }
 
     public class PickAColorForm : Form
@@ -238,8 +237,6 @@ namespace Ex05.GUI
                 colorButton.Enabled = false;
             }
         }
-
-
     }
 
     public class SequenceButton : Button
@@ -263,7 +260,6 @@ namespace Ex05.GUI
             {
                 return m_Guess;
             }
-
         }
 
         public int Row

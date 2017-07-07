@@ -28,7 +28,7 @@ namespace Ex05.GUI
             this.Controls.Add(m_ButtonNumberOfChances);
             this.Controls.Add(m_ButtonStart);
 
-            this.m_ButtonNumberOfChances.Click += new EventHandler(NumberOfGuesses_Click);
+            this.m_ButtonNumberOfChances.Click += new EventHandler(numberOfGuesses_Click);
             this.m_ButtonStart.Click += new EventHandler(start_Click);
         }
 
@@ -42,7 +42,7 @@ namespace Ex05.GUI
             m_ButtonNumberOfChances.Location = new Point(this.ClientSize.Width, this.ClientSize.Height - 8);
         }
 
-        private void NumberOfGuesses_Click(Object sender, EventArgs e)
+        private void numberOfGuesses_Click(Object sender, EventArgs e)
         {
             if (m_CounterOfGuessesClicks++ <= k_MaxSizeOfGuesses)
             {
@@ -58,6 +58,11 @@ namespace Ex05.GUI
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
         }
     }
 }
