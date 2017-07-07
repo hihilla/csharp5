@@ -82,23 +82,6 @@ namespace Ex05.Logic
 					o_CorrectInPlace++;
 				}
 			}
-
-			//for (int i = 0; i < counterInPlace; i++)
-			//{
-			//	feedbackOnGuess.Add('V');
-			//}
-
-			//for (int i = 0; i < counterMissplaced; i++)
-			//{
-			//	feedbackOnGuess.Add('X');
-			//}
-
-			//for (int i = counterInPlace + counterMissplaced; i < k_NumberOfLettersInWord; i++)
-			//{
-			//	feedbackOnGuess.Add(' ');
-			//}
-
-			//return feedbackOnGuess;
 		}
 
 		private List<bool> letterChecker(char i_letterToCheck, int i_indexOfLetter)

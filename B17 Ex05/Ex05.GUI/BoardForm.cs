@@ -128,6 +128,14 @@ namespace Ex05.GUI
             }
         }
 
+        private void setArrowBottonsOnClicks()
+        {
+            foreach (GuessButton arrowButton in m_ArrowButtons)
+            {
+                arrowButton.Click += new EventHandler(arrowButton_Click);
+            }
+        }
+
         private void enableRow(int i_Row)
         {
             foreach (GuessButton grayButton in m_GuessBottonsRows[i_Row])
@@ -136,11 +144,19 @@ namespace Ex05.GUI
             }
         }
 
-        private void setArrowBottonsOnClicks()
+        private void disableRow(int i_Row)
         {
-            foreach (GuessButton arrowButton in m_ArrowButtons)
+            foreach (GuessButton grayButton in m_GuessBottonsRows[i_Row])
             {
-                arrowButton.Click += new EventHandler(arrowButton_Click);
+                grayButton.Enabled = true;
+            }
+        }
+
+        private void disableAllRows()
+        {
+            for (int i = 0; i < r_NumberOfRounds; i++)
+            {
+                disableRow(i);
             }
         }
 
@@ -173,11 +189,12 @@ namespace Ex05.GUI
             {
                 arrowButton.Enabled = false;
                 List<char> currentGuess = m_PlayersGuesses[arrowButton.Row];
-                this.m_CurrentGame.FeedbackForPlayerGuess(currentGuess, 
-                                                          out correctInPlace, 
+                this.m_CurrentGame.FeedbackForPlayerGuess(currentGuess,
+                                                          out correctInPlace,
                                                           out correctMissPlaced);
 
                 showScore(arrowButton.Row, correctInPlace, correctMissPlaced);
+
             }
         }
 
@@ -212,8 +229,17 @@ namespace Ex05.GUI
 
             for (int p = 0; p < i_CorrectMissPlace && p + i_CorrectInPlace <= 4; p++)
             {
-                m_ScoreButtons[i_Row][p + i_CorrectInPlace].BackColor = Color.Black;
+                m_ScoreButtons[i_Row][p + i_CorrectInPlace].BackColor = Color.Yellow;
             }
+        }
+
+        private void displaySequence()
+        {
+            Color[] buttonsColors = { Color.Pink, Color.Red, Color.LightGreen,
+                                      Color.LightBlue, Color.Blue, Color.Yellow,
+                                      Color.Brown, Color.White};
+            string sequence = m_CurrentGame.GetWord();
+
         }
 
     }
