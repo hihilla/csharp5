@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿﻿﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
@@ -28,7 +28,7 @@ namespace Ex05.GUI
         public BoardForm(int i_NumberOfRounds) : base()
         {
             r_NumberOfRounds = i_NumberOfRounds;
-            this.Size = new Size(300, 80 + (50 * i_NumberOfRounds));
+            this.Size = new Size(300, 80 + (55 * i_NumberOfRounds));
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Bullseye";
         }
@@ -140,7 +140,6 @@ namespace Ex05.GUI
                 colorsForm.ShowDialog();
                 m_PlayersGuesses[guessButton.Row] = colorsForm.Guess;
                 //guessButton.Guess = 
-                //colorsForm.Close();
             }
         }
 
@@ -239,10 +238,10 @@ namespace Ex05.GUI
                 currentButton.BackColor = buttonsColors[i];
                 currentButton.Location = new Point(5 + ((i / 2) * 45),
                                                    5 + ((i % 2) * 45));
-                if (m_Guess.Contains(currentGuess))
-                {
-                    currentButton.Enabled = false;
-                }
+                //if (m_Guess.Contains(currentGuess))
+                //{
+                //    currentButton.Enabled = false;
+                //}
 
                 m_ColoredButtons.Add(currentButton);
             }

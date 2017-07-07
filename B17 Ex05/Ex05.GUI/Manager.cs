@@ -1,4 +1,4 @@
-﻿﻿﻿using System.Collections.Generic;
+﻿﻿﻿﻿using System.Collections.Generic;
 using Ex05.Logic;
 
 namespace Ex05.GUI
@@ -13,7 +13,7 @@ namespace Ex05.GUI
         private bool m_PlayerWins = false;
         private bool m_KeepPlaying = true;
  
-        public Manager(int i_NumberOfRounds)
+        public Manager()
         {
         }
 
