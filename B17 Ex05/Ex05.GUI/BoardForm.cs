@@ -90,7 +90,7 @@ namespace Ex05.GUI
             arrowButton.Location = new Point(195, 90 + (45 * i_RowNumber));
             arrowButton.Text = "-->>";
             arrowButton.TextAlign = ContentAlignment.MiddleCenter;
-            arrowButton.Enabled = i_RowNumber == 0;
+            arrowButton.Enabled = false;
 
             return arrowButton;
         }
@@ -156,6 +156,10 @@ namespace Ex05.GUI
                 m_PlayersGuesses[guessButton.Row] = colorsForm.Guess;
                 guessButton.BackColor = colorsForm.ChosenColor;
                 guessButton.SetGuess = true;
+                if (allRowSet(guessButton.Row))
+                {
+                    m_ArrowButtons[guessButton.Row].Enabled = true;
+                }
             }
         }
 
@@ -184,9 +188,11 @@ namespace Ex05.GUI
             return guess;
         }
 
-        private bool allRowSet(int i_Row) {
+        private bool allRowSet(int i_Row)
+        {
             bool isSet = true;
-            foreach (GuessButton guessButton in m_GuessBottonsRows[i_Row]) {
+            foreach (GuessButton guessButton in m_GuessBottonsRows[i_Row])
+            {
                 isSet &= guessButton.SetGuess;
             }
 
@@ -201,7 +207,6 @@ namespace Ex05.GUI
                 m_GuessBottonsRows[i_RowNumber][i].Enabled = true;
             }
 
-            m_ArrowButtons[i_RowNumber].Enabled = true;
             m_PlayersGuesses[i_RowNumber] = new List<char>();
         }
 
@@ -337,10 +342,10 @@ namespace Ex05.GUI
             {
                 return m_SetGuess;
             }
-			set
-			{
+            set
+            {
                 m_SetGuess = value;
-			}
+            }
         }
 
         public char Guess
