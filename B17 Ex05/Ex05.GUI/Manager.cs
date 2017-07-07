@@ -29,9 +29,9 @@ namespace Ex05.GUI
             game.RandomizeNewWord();
             m_GamesWord = game.GetWord();
             Player player = new Player();
-            GuessesForm GuessesWindow = new GuessesForm();
-            GuessesWindow.ShowDialog();
-            int numberOfGuesses = GuessesWindow.CounterOfGuessesClicks;
+            GuessesForm guessForm = new GuessesForm();
+            guessForm.ShowDialog();
+            int numberOfGuesses = guessForm.CounterOfGuessesClicks;
             BoardForm board = new BoardForm(numberOfGuesses);
             board.ShowDialog();
 
