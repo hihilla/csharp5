@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
@@ -252,7 +252,7 @@ namespace Ex05.GUI
             string sequence = m_CurrentGame.GetWord();
             for (int i = 0; i < k_NumberOfButtonsInGuess; i++) {
                 int colorIndex = sequence[i] - 'A';
-                m_BlackButtons[i].BackColor = buttonsColors[i];
+                m_BlackButtons[i].BackColor = buttonsColors[colorIndex];
             }
         }
 
