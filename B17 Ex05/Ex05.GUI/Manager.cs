@@ -1,4 +1,4 @@
-﻿﻿using System.Collections.Generic;
+﻿﻿﻿using System.Collections.Generic;
 using Ex05.Logic;
 
 namespace Ex05.GUI
@@ -30,6 +30,7 @@ namespace Ex05.GUI
             m_GamesWord = game.GetWord();
             Player player = new Player();
             GuessesForm GuessesWindow = new GuessesForm();
+            GuessesWindow.ShowDialog();
             int numberOfGuesses = GuessesWindow.CounterOfGuessesClicks;
             BoardForm board = new BoardForm(numberOfGuesses);
             board.ShowDialog();

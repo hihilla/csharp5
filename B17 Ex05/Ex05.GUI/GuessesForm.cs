@@ -38,6 +38,7 @@ namespace Ex05.GUI
                 this.ClientSize.Height - m_ButtonStart.Height - 8);
 
             m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", m_CounterOfGuessesClicks);
+            m_ButtonNumberOfChances.Location = new Point(this.ClientSize.Width, this.ClientSize.Height - 8);
         }
 
         private void NumberOfGuesses_Click(Object sender, EventArgs e)
