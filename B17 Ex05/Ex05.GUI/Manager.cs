@@ -12,7 +12,6 @@ namespace Ex05.GUI
         private List<List<char>> m_ListOfGuessesFeedback = new List<List<char>>();
         private bool m_PlayerWins = false;
         private bool m_KeepPlaying = true;
-        GuessesWindow m_GuessesWindow = new GuessesWindow();
  
         public Manager()
         {
@@ -30,7 +29,8 @@ namespace Ex05.GUI
             game.RandomizeNewWord();
             m_GamesWord = game.GetWord();
             Player player = new Player();
-            int numberOfGuesses = m_GuessesWindow.CounterOfGuessesClicks;
+            GuessesWindow GuessesWindow = new GuessesWindow();
+            int numberOfGuesses = GuessesWindow.CounterOfGuessesClicks;
             BoardForm board = new BoardForm(numberOfGuesses);
             board.ShowDialog();
 
