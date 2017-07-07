@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Ex05.GUI
 {
-    public class GuessesWindow : Form
+    public class GuessesForm : Form
     {
         Button m_ButtonNumberOfChances = new Button();
         Button m_ButtonStart = new Button();
@@ -19,7 +19,7 @@ namespace Ex05.GUI
             }
         }
 
-        public GuessesWindow()
+        public GuessesForm()
         {
             this.Size = new System.Drawing.Size(150, 150);
             this.StartPosition = FormStartPosition.CenterParent;
