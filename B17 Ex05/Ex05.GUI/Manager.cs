@@ -13,7 +13,7 @@ namespace Ex05.GUI
         private bool m_PlayerWins = false;
         private bool m_KeepPlaying = true;
  
-        public Manager()
+        public Manager(int i_NumberOfRounds)
         {
         }
 
