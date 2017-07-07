@@ -32,7 +32,7 @@ namespace Ex05.GUI
             GuessesForm guessForm = new GuessesForm();
             guessForm.ShowDialog();
             int numberOfGuesses = guessForm.CounterOfGuessesClicks;
-            BoardForm board = new BoardForm(numberOfGuesses);
+            BoardForm board = new BoardForm(numberOfGuesses, game);
             board.ShowDialog();
 
             for (m_CurrentRound = 1; m_CurrentRound < m_PlayersNumberOfRounds + 1 && !player.QuiteGame && !m_PlayerWins; m_CurrentRound++)

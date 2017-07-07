@@ -25,9 +25,10 @@ namespace Ex05.GUI
             }
         }
 
-        public BoardForm(int i_NumberOfRounds) : base()
+        public BoardForm(int i_NumberOfRounds, Game i_Game) : base()
         {
             r_NumberOfRounds = i_NumberOfRounds;
+            m_CurrentGame = i_Game;
             for (int i = 0; i < r_NumberOfRounds; i++)
             {
                 m_PlayersGuesses.Add(new List<char>());
@@ -164,6 +165,8 @@ namespace Ex05.GUI
             int correctMissPlaced = 0;
 
             // get guess from colors window and send as List<char> to game.FeedbackForPlayerGuess (with out params)
+            m_CurrentGame.FeedbackForPlayerGuess(getCurrentGuess(), out correctInPlace, out correctMissPlaced);
+
             GuessButton arrowButton = sender as GuessButton;
             if (arrowButton != null)
             {
