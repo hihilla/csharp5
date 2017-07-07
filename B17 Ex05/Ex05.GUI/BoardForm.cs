@@ -50,6 +50,7 @@ namespace Ex05.GUI
         private void initControls()
         {
             List<Control> controls = new List<Control>();
+
             for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
             {
                 Button blackButton = new SequenceButton();
