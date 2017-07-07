@@ -23,7 +23,7 @@ namespace Ex05.GUI
 
         }
 
-        private void gameOn()
+        public void gameOn()
         {
             Game game = new Game();
             game.RandomizeNewWord();
@@ -38,7 +38,7 @@ namespace Ex05.GUI
             for (m_CurrentRound = 1; m_CurrentRound < m_PlayersNumberOfRounds + 1 && !player.QuiteGame && !m_PlayerWins; m_CurrentRound++)
             {
                 board.ActivateRow(m_CurrentRound);
-            }
+            } 
         }
     }
 }

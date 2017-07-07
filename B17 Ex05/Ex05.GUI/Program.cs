@@ -5,9 +5,8 @@ namespace Ex05.GUI
     {
         public static void Main()
         {
-            BoardForm bf = new BoardForm(8);
-            bf.ShowDialog();
-            
+            Manager manager = new Manager();
+            manager.gameOn();
         }
     }
 }
