@@ -151,7 +151,7 @@ namespace Ex05.GUI
         {
             foreach (GuessButton grayButton in m_GuessBottonsRows[i_Row])
             {
-                grayButton.Enabled = true;
+                grayButton.Enabled = false;
             }
         }
 
