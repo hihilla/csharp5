@@ -10,7 +10,7 @@ namespace Ex05.GUI
     {
         private readonly int r_NumberOfRounds;
         private const int k_NumberOfButtonsInGuess = 4;
-        private List<List<GuessButton>> m_GuessRows = new List<List<GuessButton>>();
+        private List<List<GuessButton>> m_GuessBottonsRows = new List<List<GuessButton>>();
         private List<GuessButton> m_ArrowButtons = new List<GuessButton>();
         private List<List<Button>> m_ScoreButtons = new List<List<Button>>();
         private List<List<char>> m_PlayersGuesses = new List<List<char>>();
@@ -72,7 +72,7 @@ namespace Ex05.GUI
                     controls.Add(grayButton);
                 }
 
-                m_GuessRows.Add(buttonsInRow);
+                m_GuessBottonsRows.Add(buttonsInRow);
                 m_ArrowButtons.Add(generateArrowButton(row));
                 m_ScoreButtons.Add(generateScoreButtons(row));
                 controls.Add(m_ArrowButtons[row]);
@@ -118,12 +118,20 @@ namespace Ex05.GUI
 
         private void setGuessButtonsOnClicks()
         {
-            foreach (List<GuessButton> buttons in m_GuessRows)
+            foreach (List<GuessButton> buttons in m_GuessBottonsRows)
             {
                 foreach (GuessButton grayButton in buttons)
                 {
                     grayButton.Click += new EventHandler(guessButton_Click);
                 }
+            }
+        }
+
+        private void enableRow(int i_Row)
+        {
+            foreach (GuessButton grayButton in m_GuessBottonsRows[i_Row])
+            {
+                grayButton.Enabled = true;
             }
         }
 
@@ -146,6 +154,7 @@ namespace Ex05.GUI
                 colorsForm.ShowDialog();
                 m_PlayersGuesses[guessButton.Row] = colorsForm.Guess;
                 guessButton.BackColor = colorsForm.ChosenColor;
+                guessButton.SetGuess = true;
             }
         }
 
@@ -167,9 +176,18 @@ namespace Ex05.GUI
             List<char> guess = new List<char>();
             for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
             {
-                guess.Add(m_GuessRows[m_CurrentRound][i].Guess);
+                guess.Add(m_GuessBottonsRows[m_CurrentRound][i].Guess);
             }
             return guess;
+        }
+
+        private bool allRowSet(int i_Row) {
+            bool isSet = true;
+            foreach (GuessButton guessButton in m_GuessBottonsRows[i_Row]) {
+                isSet &= guessButton.SetGuess;
+            }
+
+            return isSet;
         }
 
         public void ActivateRow(int i_RowNumber)
@@ -177,7 +195,7 @@ namespace Ex05.GUI
             this.m_CurrentRound = i_RowNumber;
             for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
             {
-                m_GuessRows[i_RowNumber][i].Enabled = true;
+                m_GuessBottonsRows[i_RowNumber][i].Enabled = true;
             }
 
             m_ArrowButtons[i_RowNumber].Enabled = true;
@@ -308,6 +326,19 @@ namespace Ex05.GUI
         private int m_Colum;
         private int m_Row;
         private char m_Guess;
+        private bool m_SetGuess = false;
+
+        internal bool SetGuess
+        {
+            get
+            {
+                return m_SetGuess;
+            }
+			set
+			{
+                m_SetGuess = value;
+			}
+        }
 
         public char Guess
         {
