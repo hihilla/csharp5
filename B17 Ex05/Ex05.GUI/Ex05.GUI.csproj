@@ -40,7 +40,7 @@
       <IncludeInPackage>false</IncludeInPackage>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GuessesWindow.cs">
+    <Compile Include="GuessesForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
