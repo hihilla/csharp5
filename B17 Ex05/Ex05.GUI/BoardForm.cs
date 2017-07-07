@@ -194,7 +194,14 @@ namespace Ex05.GUI
                                                           out correctMissPlaced);
 
                 showScore(arrowButton.Row, correctInPlace, correctMissPlaced);
-
+                if (correctInPlace == 4)
+                {
+                    enableRow(arrowButton.Row + 1);
+                }
+                else
+                {
+                    disableAllRows();
+                }
             }
         }
 
