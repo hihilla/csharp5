@@ -281,7 +281,7 @@ namespace Ex05.GUI
                                                    5 + ((i % 2) * 45));
                 if (m_Guess.Contains(currentGuess))
                 {
-                    currentButton.Visible = false;
+                    currentButton.Enabled = false;
                 }
 
                 m_ColoredButtons.Add(currentButton);
