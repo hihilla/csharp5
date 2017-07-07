@@ -265,7 +265,7 @@ namespace Ex05.GUI
             {
                 m_Guess.Add(colorButton.Guess);
             }
-            //this.Close();
+            this.Close();
         }
 
 
