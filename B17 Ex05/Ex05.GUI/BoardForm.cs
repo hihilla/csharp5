@@ -1,4 +1,4 @@
-﻿﻿﻿using System;
+﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
@@ -52,6 +52,7 @@ namespace Ex05.GUI
             for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
             {
                 Button blackButton = new SequenceButton();
+                blackButton.Enabled = false;
                 blackButton.Location = new Point(15 + (45 * i), 15);
                 controls.Add(blackButton);
             }
@@ -62,6 +63,11 @@ namespace Ex05.GUI
                 for (int colum = 0; colum < k_NumberOfButtonsInGuess; colum++)
                 {
                     GuessButton grayButton = new GuessButton(row, colum);
+                    if (row != 0)
+                    {
+                        grayButton.Enabled = false;
+                        //grayButton.Visible = false;
+                    }
                     grayButton.Location = new Point(15 + (45 * colum), 80 + (45 * row));
                     buttonsInRow.Add(grayButton);
                     controls.Add(grayButton);
@@ -157,15 +163,15 @@ namespace Ex05.GUI
             }
         }
 
-        //private List<char> getCurrentGuess()
-        //{
-        //    List<char> guess = new List<char>();
-        //    for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
-        //    {
-        //        guess.Add(m_GuessRows[m_CurrentRound][i].Guess);
-        //    }
-        //    return guess;
-        //}
+        private List<char> getCurrentGuess()
+        {
+            List<char> guess = new List<char>();
+            for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
+            {
+                guess.Add(m_GuessRows[m_CurrentRound][i].Guess);
+            }
+            return guess;
+        }
 
         public void ActivateRow(int i_RowNumber)
         {
@@ -200,24 +206,24 @@ namespace Ex05.GUI
         private List<char> m_Guess = new List<char>();
         private Color m_ChosenColor;
         private int m_Row;
-        private int m_Colum;      
-		
+        private int m_Colum;
+
         public Color ChosenColor
-		{
-			get
-			{
-				return m_ChosenColor;
-			}
-		}
-		
-		public List<GuessButton> ColoredButtons
-		{
-			get
-			{
-				return m_ColoredButtons;
-			}
-		}
-		
+        {
+            get
+            {
+                return m_ChosenColor;
+            }
+        }
+
+        public List<GuessButton> ColoredButtons
+        {
+            get
+            {
+                return m_ColoredButtons;
+            }
+        }
+
         public List<char> Guess
         {
             get
@@ -258,7 +264,7 @@ namespace Ex05.GUI
                                                    5 + ((i % 2) * 45));
                 if (m_Guess.Contains(currentGuess))
                 {
-                    currentButton.Enabled = false;
+                    currentButton.Visible = false;
                 }
 
                 m_ColoredButtons.Add(currentButton);
@@ -295,7 +301,6 @@ namespace Ex05.GUI
         {
             this.BackColor = Color.Black;
             this.Size = new Size(40, 40);
-            this.Enabled = false;
         }
     }
 
