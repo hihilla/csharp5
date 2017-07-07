@@ -34,9 +34,11 @@ namespace Ex05.GUI
             m_ButtonStart.Location = new Point(this.ClientSize.Width - 95,
                 this.ClientSize.Height - m_ButtonStart.Height - 10);
 
-            m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", m_CounterOfGuessesClicks);
-            m_ButtonNumberOfChances.Width = this.ClientSize.Width;//chnged from 280
-            m_ButtonNumberOfChances.Location = new Point(this.ClientSize.Width - 278, this.ClientSize.Height - 100);
+            m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", 
+                                                         m_CounterOfGuessesClicks);
+            m_ButtonNumberOfChances.Width = this.ClientSize.Width;
+            m_ButtonNumberOfChances.Location = new Point(this.ClientSize.Width - 278, 
+                                                         this.ClientSize.Height - 100);
 
             this.m_ButtonNumberOfChances.Click += new EventHandler(numberOfGuesses_Click);
             this.m_ButtonStart.Click += new EventHandler(start_Click);
@@ -48,7 +50,8 @@ namespace Ex05.GUI
 
             if (m_CounterOfGuessesClicks <= k_MaxSizeOfGuesses)
             {
-                this.m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", m_CounterOfGuessesClicks);
+                this.m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}", 
+                                                                  m_CounterOfGuessesClicks);
                 
                 if (m_CounterOfGuessesClicks == k_MaxSizeOfGuesses)
                 {
