@@ -203,7 +203,7 @@ namespace Ex05.GUI
             initControls(i_Row);
         }
 
-        private void initControls(int i_Row)
+        protected void initControls(int i_Row)
         {
             Color[] buttonsColors = { Color.Pink, Color.Red, Color.LightGreen,
                                       Color.LightBlue, Color.Blue, Color.Yellow,
@@ -215,7 +215,6 @@ namespace Ex05.GUI
                 currentButton.BackColor = buttonsColors[i];
                 currentButton.Location = new Point(5 + ((i % 2) * 45),
                                                    5 + ((i / 2) * 45));
-                currentButton.
 
                 m_ColoredButtons.Add(currentButton);
             }
@@ -223,7 +222,24 @@ namespace Ex05.GUI
             this.Controls.AddRange(m_ColoredButtons.ToArray());
         }
 
+        private void setControlsEventHandlers()
+        {
+            foreach (GuessButton colorButton in m_ColoredButtons)
+            {
+                colorButton.Click += new EventHandler(colorButton_Click);
+            }
+        }
+
         private void colorButton_Click(object sender, EventArgs e)
+        {
+            GuessButton colorButton = sender as GuessButton;
+            if (colorButton != null)
+            {
+                addToGuess(colorButton.Guess);
+            }
+        }
+
+        private void addToGuess(char i_Guess)
         {
 
         }
