@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
@@ -168,18 +168,19 @@ namespace Ex05.GUI
                 PickAColorForm colorsForm = new PickAColorForm(guessButton.Row,
                                                                guessButton.Colum,
                                                                m_PlayersGuesses[guessButton.Row]);
-                DialogResult dialogResult = colorsForm.ShowDialog();
-                Console.WriteLine(dialogResult);
-                if (dialogResult != DialogResult.Cancel)
+                colorsForm.ShowDialog();
+                //DialogResult dialogResult = colorsForm.ShowDialog();
+                //Console.WriteLine(dialogResult);
+                //if (dialogResult != DialogResult.Cancel)
+                //{
+                m_PlayersGuesses[guessButton.Row] = colorsForm.Guess;
+                guessButton.BackColor = colorsForm.ChosenColor;
+                guessButton.SetGuess = true;
+                if (allRowSet(guessButton.Row))
                 {
-                    m_PlayersGuesses[guessButton.Row] = colorsForm.Guess;
-                    guessButton.BackColor = colorsForm.ChosenColor;
-                    guessButton.SetGuess = true;
-                    if (allRowSet(guessButton.Row))
-                    {
-                        m_ArrowButtons[guessButton.Row].Enabled = true;
-                    }
+                    m_ArrowButtons[guessButton.Row].Enabled = true;
                 }
+                //}
             }
         }
 
@@ -409,7 +410,7 @@ namespace Ex05.GUI
 
         public GuessButton(int i_Row) : base()
         {
-            this.DialogResult = DialogResult.OK;
+            //this.DialogResult = DialogResult.OK;
             this.m_Row = i_Row;
             this.BackColor = Color.Gray;
         }
