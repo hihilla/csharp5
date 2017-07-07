@@ -310,7 +310,7 @@ namespace Ex05.GUI
 
         protected void initControls(int i_Row, int i_Colum)
         {
-            Color[] buttonsColors = { Color.Pink, Color.Red, Color.LightGreen,
+            Color[] buttonsColors = { Color.Magenta, Color.Red, Color.LightGreen,
                                       Color.LightBlue, Color.Blue, Color.Yellow,
                                       Color.Brown, Color.White};
             for (int i = 0; i < 8; i++)
@@ -413,7 +413,8 @@ namespace Ex05.GUI
         {
             //this.DialogResult = DialogResult.OK;
             this.m_Row = i_Row;
-            this.BackColor = Color.Gray;
+            this.BackColor = default(Color);
+
         }
 
         public GuessButton(int i_Row, int i_Colum) : this(i_Row)
