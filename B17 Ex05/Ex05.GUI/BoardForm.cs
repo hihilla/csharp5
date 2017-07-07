@@ -168,13 +168,17 @@ namespace Ex05.GUI
                 PickAColorForm colorsForm = new PickAColorForm(guessButton.Row,
                                                                guessButton.Colum,
                                                                m_PlayersGuesses[guessButton.Row]);
-                colorsForm.ShowDialog();
-                m_PlayersGuesses[guessButton.Row] = colorsForm.Guess;
-                guessButton.BackColor = colorsForm.ChosenColor;
-                guessButton.SetGuess = true;
-                if (allRowSet(guessButton.Row))
+                DialogResult dialogResult = colorsForm.ShowDialog();
+                Console.WriteLine(dialogResult);
+                if (dialogResult != DialogResult.Cancel)
                 {
-                    m_ArrowButtons[guessButton.Row].Enabled = true;
+                    m_PlayersGuesses[guessButton.Row] = colorsForm.Guess;
+                    guessButton.BackColor = colorsForm.ChosenColor;
+                    guessButton.SetGuess = true;
+                    if (allRowSet(guessButton.Row))
+                    {
+                        m_ArrowButtons[guessButton.Row].Enabled = true;
+                    }
                 }
             }
         }
@@ -405,18 +409,19 @@ namespace Ex05.GUI
 
         public GuessButton(int i_Row) : base()
         {
-            m_Row = i_Row;
+            this.DialogResult = DialogResult.OK;
+            this.m_Row = i_Row;
             this.BackColor = Color.Gray;
         }
 
         public GuessButton(int i_Row, int i_Colum) : this(i_Row)
         {
-            m_Colum = i_Colum;
+            this.m_Colum = i_Colum;
         }
 
         public GuessButton(int i_Row, int i_Colum, char i_Guess) : this(i_Row, i_Colum)
         {
-            m_Guess = i_Guess;
+            this.m_Guess = i_Guess;
         }
     }
 }
