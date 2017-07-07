@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace Ex05.Logic
+namespace Ex05.GUI
 {
     public class GuessesManager : Form
     {

@@ -39,6 +39,9 @@
     <Compile Include="BoardForm.cs">
       <IncludeInPackage>false</IncludeInPackage>
     </Compile>
+    <Compile Include="GuessesManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ex05.Logic\Ex05.Logic.csproj">
