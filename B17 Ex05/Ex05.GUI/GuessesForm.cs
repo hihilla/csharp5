@@ -6,9 +6,9 @@ namespace Ex05.GUI
 {
     public class GuessesForm : Form
     {
-        Button m_ButtonNumberOfChances;
-        Button m_ButtonStart;
-        const int k_MaxSizeOfGuesses = 10;
+        private const int k_MaxSizeOfGuesses = 10;
+        private Button m_ButtonNumberOfChances;
+        private Button m_ButtonStart;   
         private int m_CounterOfGuessesClicks = 4;
 
         public int CounterOfGuessesClicks
@@ -38,13 +38,16 @@ namespace Ex05.GUI
             m_ButtonStart = new Button();
 
             m_ButtonStart.Text = "Start";
-            m_ButtonStart.Location = new Point(this.ClientSize.Width - 95,
-                                               this.ClientSize.Height - m_ButtonStart.Height - 10);
-            m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}",
-                                                         m_CounterOfGuessesClicks);
+            m_ButtonStart.Location = new Point(
+                                     this.ClientSize.Width - 95,
+                                     this.ClientSize.Height - m_ButtonStart.Height - 10);
+            m_ButtonNumberOfChances.Text = string.Format(
+                                           "Number of chances: {0}",
+                                           m_CounterOfGuessesClicks);
             m_ButtonNumberOfChances.Width = this.ClientSize.Width;
-            m_ButtonNumberOfChances.Location = new Point(this.ClientSize.Width - 278,
-                                                         this.ClientSize.Height - 100);
+            m_ButtonNumberOfChances.Location = new Point(
+                                               this.ClientSize.Width - 278,
+                                               this.ClientSize.Height - 100);
 
             this.Controls.Add(m_ButtonNumberOfChances);
             this.Controls.Add(m_ButtonStart);
@@ -56,18 +59,17 @@ namespace Ex05.GUI
 			this.m_ButtonStart.Click += new EventHandler(start_Click);
 		}
 
-		private void numberOfGuesses_Click(Object sender, EventArgs e)
+		private void numberOfGuesses_Click(object sender, EventArgs e)
         {
-
             if (m_CounterOfGuessesClicks < k_MaxSizeOfGuesses)
             {
                 m_CounterOfGuessesClicks++;
-                this.m_ButtonNumberOfChances.Text = string.Format("Number of chances: {0}",
-                                                                  m_CounterOfGuessesClicks);
+                this.m_ButtonNumberOfChances.Text = string.Format(
+                                                    "Number of chances: {0}", m_CounterOfGuessesClicks);
             }
         }
 
-        private void start_Click(Object sender, EventArgs e)
+        private void start_Click(object sender, EventArgs e)
         {
             this.Close();
             this.DialogResult = DialogResult.OK;
