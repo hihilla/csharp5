@@ -12,19 +12,18 @@ namespace Ex05.Logic
         private const int k_MaxNumberOfRounds = 10;
         private const char k_FirstLetterPossible = 'A';
         private const char k_LastLetterPossible = 'H';
-        public List<char> m_WordToReturn = new List<char>();
 
-        // the member word to retrun was inside, I put it out as public member
         public void RandomizeNewWord()
 		{
+            List<char> wordToReturn = new List<char>();
 			for (int i = 0; i < k_NumberOfLettersInWord; i++)
 			{
 				int nextLetterAsNumber = new Random().Next(k_FirstLetterPossible,
 														   k_LastLetterPossible);
-				if (!m_WordToReturn.Contains((char)nextLetterAsNumber))
+				if (!wordToReturn.Contains((char)nextLetterAsNumber))
 				{
 					char nextLetter = (char)nextLetterAsNumber;
-					m_WordToReturn.Insert(i, nextLetter);
+					wordToReturn.Insert(i, nextLetter);
 				}
 				else
 				{
@@ -32,7 +31,7 @@ namespace Ex05.Logic
 				}
 			}
 
-			m_WordToGuess = m_WordToReturn;
+			m_WordToGuess = wordToReturn;
 		}
 
 		public string GetWord()

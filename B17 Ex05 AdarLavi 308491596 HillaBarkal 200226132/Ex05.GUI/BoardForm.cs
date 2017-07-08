@@ -34,6 +34,7 @@ namespace Ex05.GUI
             {
                 m_PlayersGuesses.Add(new List<char>());
             }
+
             this.Size = new Size(300, 90 + (50 * i_NumberOfRounds));
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -71,6 +72,7 @@ namespace Ex05.GUI
                     {
                         grayButton.Enabled = false;
                     }
+
                     grayButton.Location = new Point(15 + (45 * colum), 80 + (45 * row));
                     buttonsInRow.Add(grayButton);
                     controls.Add(grayButton);
@@ -168,9 +170,10 @@ namespace Ex05.GUI
             GuessButton guessButton = sender as GuessButton;
             if (guessButton != null)
             {
-                PickAColorForm colorsForm = new PickAColorForm(guessButton.Row,
-                                                               guessButton.Colum,
-                                                               m_PlayersGuesses[guessButton.Row]);
+                PickAColorForm colorsForm = new PickAColorForm(
+                                            guessButton.Row,
+                                            guessButton.Colum,
+                                            m_PlayersGuesses[guessButton.Row]);
                 colorsForm.ShowDialog();
                 m_PlayersGuesses[guessButton.Row] = colorsForm.Guess;
                 guessButton.BackColor = colorsForm.ChosenColor;
@@ -193,9 +196,10 @@ namespace Ex05.GUI
                 arrowButton.Enabled = false;
                 disableRow(arrowButton.Row);
                 List<char> currentGuess = m_PlayersGuesses[arrowButton.Row];
-                this.m_CurrentGame.FeedbackForPlayerGuess(currentGuess,
-                                                          out correctInPlace,
-                                                          out correctMissPlaced);
+                this.m_CurrentGame.FeedbackForPlayerGuess(
+                                    currentGuess,
+                                    out correctInPlace,
+                                    out correctMissPlaced);
 
                 showScore(arrowButton.Row, correctInPlace, correctMissPlaced);
                 if (correctInPlace == 4)
@@ -349,10 +353,9 @@ namespace Ex05.GUI
                 m_Guess.Add(colorButton.Guess);
                 m_ChosenColor = colorButton.BackColor;
             }
+
             this.Close();
         }
-
-
     }
 
     public class SequenceButton : Button

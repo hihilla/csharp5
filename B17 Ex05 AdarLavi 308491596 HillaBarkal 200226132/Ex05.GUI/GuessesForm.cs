@@ -65,7 +65,8 @@ namespace Ex05.GUI
             {
                 m_CounterOfGuessesClicks++;
                 this.m_ButtonNumberOfChances.Text = string.Format(
-                                                    "Number of chances: {0}", m_CounterOfGuessesClicks);
+                                                    "Number of chances: {0}",
+                                                    m_CounterOfGuessesClicks);
             }
         }
 
