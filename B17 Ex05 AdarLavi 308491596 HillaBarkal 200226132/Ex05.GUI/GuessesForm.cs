@@ -39,15 +39,13 @@ namespace Ex05.GUI
 
             m_ButtonStart.Text = "Start";
             m_ButtonStart.Location = new Point(
-                                     this.ClientSize.Width - 95,
+                                     this.ClientSize.Width - m_ButtonStart.Width - 10,
                                      this.ClientSize.Height - m_ButtonStart.Height - 10);
             m_ButtonNumberOfChances.Text = string.Format(
                                            "Number of chances: {0}",
                                            m_CounterOfGuessesClicks);
-            m_ButtonNumberOfChances.Width = this.ClientSize.Width;
-            m_ButtonNumberOfChances.Location = new Point(
-                                               this.ClientSize.Width - 278,
-                                               this.ClientSize.Height - 100);
+            m_ButtonNumberOfChances.Width = 280;
+            m_ButtonNumberOfChances.Location = new Point(10, 10);
 
             this.Controls.Add(m_ButtonNumberOfChances);
             this.Controls.Add(m_ButtonStart);
