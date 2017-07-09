@@ -202,12 +202,12 @@ namespace Ex05.GUI
                                     out correctMissPlaced);
 
                 showScore(arrowButton.Row, correctInPlace, correctMissPlaced);
-                if (correctInPlace == 4 || arrowButton.Row == r_NumberOfRounds)
+                if (correctInPlace == 4 || arrowButton.Row + 1 == r_NumberOfRounds)
                 {
                     disableAllRows();
                     displaySequence();
                 }
-                else if (arrowButton.Row + 1 <= r_NumberOfRounds)
+                else if (arrowButton.Row + 1 < r_NumberOfRounds)
                 {
                     enableRow(arrowButton.Row + 1);
                 }
