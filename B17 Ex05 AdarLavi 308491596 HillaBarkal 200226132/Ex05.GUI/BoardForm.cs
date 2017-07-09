@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
@@ -202,7 +202,7 @@ namespace Ex05.GUI
                                     out correctMissPlaced);
 
                 showScore(arrowButton.Row, correctInPlace, correctMissPlaced);
-                if (correctInPlace == 4)
+                if (correctInPlace == 4 || arrowButton.Row == r_NumberOfRounds)
                 {
                     disableAllRows();
                     displaySequence();
@@ -251,11 +251,12 @@ namespace Ex05.GUI
 
         private void displaySequence()
         {
-			Color[] buttonsColors = { Color.Orchid, Color.Red, Color.Lime,
-									  Color.Cyan, Color.MediumBlue, Color.Yellow,
-									  Color.Brown, Color.White};
+            Color[] buttonsColors = { Color.Orchid, Color.Red, Color.Lime,
+                                      Color.Cyan, Color.MediumBlue, Color.Yellow,
+                                      Color.Brown, Color.White};
             string sequence = m_CurrentGame.GetWord();
-            for (int i = 0; i < k_NumberOfButtonsInGuess; i++) {
+            for (int i = 0; i < k_NumberOfButtonsInGuess; i++)
+            {
                 int colorIndex = sequence[i] - 'A';
                 m_BlackButtons[i].BackColor = buttonsColors[colorIndex];
             }
